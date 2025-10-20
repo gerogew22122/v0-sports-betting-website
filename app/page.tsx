@@ -5,6 +5,7 @@ import { StatsOverview } from "@/components/stats-overview"
 import { PerformanceCharts } from "@/components/performance-charts"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { FinalCTA } from "@/components/final-cta"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <StatsOverview />
       <PerformanceCharts />
       <FinalCTA />
+      <Footer />
     </main>
   )
 }

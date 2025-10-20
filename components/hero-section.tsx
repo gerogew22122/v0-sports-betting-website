@@ -54,6 +54,22 @@ export function HeroSection() {
             </Button>
           </div>
 
+          <a
+            href="https://discord.gg/sTbrp9GTKv"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 flex items-center gap-3 px-6 py-3 text-base font-medium text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5 border border-border/50 hover:border-primary/50 opacity-0 animate-fade-in-up animation-delay-1000"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-JLcbsCj03AdceurU668TRh23LeLo8J.png"
+              alt="Discord"
+              width={28}
+              height={28}
+              className="w-7 h-7"
+            />
+            <span>Join Free Tips Discord</span>
+          </a>
+
           <div className="mt-12 md:mt-16 flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm opacity-0 animate-fade-in animation-delay-800 px-4">
             <div className="flex items-center justify-center gap-2 opacity-0 animate-slide-in-left animation-delay-800">
               <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />

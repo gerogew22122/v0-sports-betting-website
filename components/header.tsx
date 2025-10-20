@@ -32,7 +32,7 @@ export function Header() {
             <span className="text-lg md:text-2xl font-display font-bold tracking-tight">Sen.Bets</span>
           </div>
 
-          <nav className="hidden md:flex flex-1 items-center justify-center gap-8">
+          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
             <button
               onClick={() => scrollToSection("performance")}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
@@ -53,13 +53,29 @@ export function Header() {
             </button>
           </nav>
 
-          <Button
-            onClick={() => scrollToSection("pricing")}
-            size="lg"
-            className="hidden md:flex bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-200 font-semibold shadow-lg shadow-secondary/20"
-          >
-            Join Now
-          </Button>
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/sen.bets/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
+            >
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F3dvlSmaqGJQPSLRzll9iTAzrTCLi4.png"
+                alt="Instagram"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+            </a>
+            <Button
+              onClick={() => scrollToSection("pricing")}
+              size="lg"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-200 font-semibold shadow-lg shadow-secondary/20"
+            >
+              Join Now
+            </Button>
+          </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -73,6 +89,21 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
             <nav className="flex flex-col gap-4">
+              <a
+                href="https://www.instagram.com/sen.bets/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              >
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F3dvlSmaqGJQPSLRzll9iTAzrTCLi4.png"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6"
+                />
+                <span>Follow on Instagram</span>
+              </a>
               <button
                 onClick={() => scrollToSection("performance")}
                 className="text-left px-4 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
