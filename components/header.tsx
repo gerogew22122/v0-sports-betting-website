@@ -61,7 +61,7 @@ export function Header() {
               className="p-2 text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
             >
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F3dvlSmaqGJQPSLRzll9iTAzrTCLi4.png"
+                src="/images/design-mode/image.png"
                 alt="Instagram"
                 width={32}
                 height={32}
@@ -96,7 +96,7 @@ export function Header() {
                 className="flex items-center gap-3 px-4 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
               >
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F3dvlSmaqGJQPSLRzll9iTAzrTCLi4.png"
+                  src="/images/design-mode/image.png"
                   alt="Instagram"
                   width={24}
                   height={24}

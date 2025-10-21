@@ -32,7 +32,7 @@ export function Footer() {
             >
               <div className="flex items-center gap-3">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F3dvlSmaqGJQPSLRzll9iTAzrTCLi4.png"
+                  src="/images/design-mode/image.png"
                   alt="Instagram"
                   width={32}
                   height={32}
@@ -54,7 +54,7 @@ export function Footer() {
                 className="w-10 h-10 rounded-full bg-pink-500/10 border border-pink-500/20 flex items-center justify-center hover:bg-pink-500/20 hover:border-pink-500/40 transition-all duration-300"
               >
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-F3dvlSmaqGJQPSLRzll9iTAzrTCLi4.png"
+                  src="/images/design-mode/image.png"
                   alt="Instagram"
                   width={20}
                   height={20}
@@ -68,7 +68,7 @@ export function Footer() {
                 className="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-500/40 transition-all duration-300"
               >
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-JLcbsCj03AdceurU668TRh23LeLo8J.png"
+                  src="/images/design-mode/image.png"
                   alt="Discord"
                   width={20}
                   height={20}
