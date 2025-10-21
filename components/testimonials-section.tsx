@@ -61,7 +61,7 @@ export function TestimonialsSection() {
           <div className="group animate-slide-up" style={{ animationDelay: "0.1s" }}>
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-slate-900/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/20">
               <img
-                src="/images/design-mode/image.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4NlmwSAtMB6poNNO55suaiZ4qgSmem.png"
                 alt="Member testimonial about growing unit size from $25 to $200"
                 className="w-full h-auto"
               />
@@ -72,7 +72,7 @@ export function TestimonialsSection() {
           <div className="group animate-slide-up" style={{ animationDelay: "0.2s" }}>
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-slate-900/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/20">
               <img
-                src="/images/design-mode/image.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-sUo505rlwAOjXuLmuUysq3VcM9AGQY.png"
                 alt="Member testimonial showing profit trend graph from April to October"
                 className="w-full h-auto"
               />
@@ -83,7 +83,7 @@ export function TestimonialsSection() {
           <div className="group animate-slide-up" style={{ animationDelay: "0.3s" }}>
             <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-slate-900/50 backdrop-blur-sm hover:border-accent/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/20">
               <img
-                src="/images/design-mode/image.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-96Re2dOqKUeaTRnGPx5PhXLAgzmj7Q.png"
                 alt="Member testimonial about growing bankroll from $300 to $3,600 in 5 months"
                 className="w-full h-auto"
               />
