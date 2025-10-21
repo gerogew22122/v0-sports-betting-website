@@ -39,7 +39,7 @@ export function Header() {
             >
               Performance
             </button>
-            
+
             <button
               onClick={() => scrollToSection("pricing")}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
@@ -55,13 +55,7 @@ export function Header() {
               rel="noopener noreferrer"
               className="p-2 text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-primary/5"
             >
-              <Image
-                src="/images/design-mode/image.png"
-                alt="Instagram"
-                width={32}
-                height={32}
-                className="w-8 h-8"
-              />
+              <Image src="/images/design-mode/image.png" alt="Instagram" width={32} height={32} className="w-8 h-8" />
             </a>
             <Button
               onClick={() => scrollToSection("pricing")}
@@ -90,13 +84,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-4 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
               >
-                <Image
-                  src="/images/design-mode/image.png"
-                  alt="Instagram"
-                  width={24}
-                  height={24}
-                  className="w-6 h-6"
-                />
+                <Image src="/images/design-mode/image.png" alt="Instagram" width={24} height={24} className="w-6 h-6" />
                 <span>Follow on Instagram</span>
               </a>
               <button
@@ -104,12 +92,6 @@ export function Header() {
                 className="text-left px-4 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
               >
                 Performance
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="text-left px-4 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
-              >
-                About
               </button>
               <button
                 onClick={() => scrollToSection("pricing")}

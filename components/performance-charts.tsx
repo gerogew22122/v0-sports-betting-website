@@ -253,44 +253,44 @@ export function PerformanceCharts() {
 
         <div className="max-w-7xl mx-auto">
           <Tabs value={activeView} onValueChange={(v) => setActiveView(v as any)} className="w-full">
-            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-8 h-12 bg-slate-800/80 backdrop-blur-sm border border-cyan-500/20">
+            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-8 h-auto md:h-12 bg-slate-800/80 backdrop-blur-sm border border-cyan-500/20">
               <TabsTrigger
                 value="sport-detail"
-                className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
+                className="font-display font-semibold text-xs md:text-sm py-2 md:py-0 data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
               >
                 Sport Details
               </TabsTrigger>
               <TabsTrigger
                 value="overall"
-                className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
+                className="font-display font-semibold text-xs md:text-sm py-2 md:py-0 data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
               >
-                Overall Performance
+                Overall
               </TabsTrigger>
               <TabsTrigger
                 value="monthly"
-                className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
+                className="font-display font-semibold text-xs md:text-sm py-2 md:py-0 data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
               >
-                Monthly Breakdown
+                Monthly
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="sport-detail" className="animate-fade-in">
               <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
                 <CardHeader>
-                  <CardTitle className="font-display text-2xl md:text-3xl text-white">
+                  <CardTitle className="font-display text-xl md:text-2xl lg:text-3xl text-white">
                     Individual Sport Performance
                   </CardTitle>
-                  <CardDescription className="text-base text-slate-300">
+                  <CardDescription className="text-sm md:text-base text-slate-300">
                     Select a sport to view detailed monthly progression
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-3 mb-8 justify-center">
+                  <div className="flex flex-wrap gap-2 md:gap-3 mb-8 justify-center">
                     {(Object.keys(sportDetailData) as Array<keyof typeof sportDetailData>).map((sport) => (
                       <button
                         key={sport}
                         onClick={() => setSelectedSport(sport)}
-                        className={`px-6 py-3 rounded-xl font-display font-semibold transition-all duration-300 ${
+                        className={`px-3 py-2 md:px-6 md:py-3 text-sm md:text-base rounded-xl font-display font-semibold transition-all duration-300 ${
                           selectedSport === sport
                             ? "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/50 scale-105"
                             : "bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border border-cyan-500/20"
@@ -305,7 +305,40 @@ export function PerformanceCharts() {
                     ))}
                   </div>
 
-                  <ResponsiveContainer width="100%" height={450}>
+                  <ResponsiveContainer width="100%" height={300} className="md:hidden">
+                    <AreaChart
+                      data={sportDetailData[selectedSport]}
+                      margin={{ top: 10, right: 10, left: -20, bottom: 10 }}
+                    >
+                      <defs>
+                        <linearGradient id="sportGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="rgb(34, 211, 238)" stopOpacity={0.5} />
+                          <stop offset="95%" stopColor="rgb(34, 211, 238)" stopOpacity={0.05} />
+                        </linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
+                      <XAxis
+                        dataKey="month"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 11 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <YAxis
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 11 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <Tooltip content={<SportDetailTooltip />} />
+                      <Area
+                        type="monotone"
+                        dataKey="units"
+                        stroke="rgb(34, 211, 238)"
+                        strokeWidth={3}
+                        fill="url(#sportGradient)"
+                        animationDuration={800}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+
+                  <ResponsiveContainer width="100%" height={450} className="hidden md:block">
                     <AreaChart
                       data={sportDetailData[selectedSport]}
                       margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
@@ -347,7 +380,7 @@ export function PerformanceCharts() {
                   </ResponsiveContainer>
 
                   <div className="mt-8 p-6 bg-slate-800/60 rounded-xl border border-cyan-500/20">
-                    <h4 className="font-display font-semibold text-lg mb-3 text-white">
+                    <h4 className="font-display font-semibold text-lg mb-4 text-white">
                       {selectedSport} Performance Summary
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -381,15 +414,41 @@ export function PerformanceCharts() {
             <TabsContent value="overall" className="animate-fade-in">
               <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
                 <CardHeader>
-                  <CardTitle className="font-display text-2xl md:text-3xl text-white">
+                  <CardTitle className="font-display text-xl md:text-2xl lg:text-3xl text-white">
                     Overall Sport Performance
                   </CardTitle>
-                  <CardDescription className="text-base text-slate-300">
+                  <CardDescription className="text-sm md:text-base text-slate-300">
                     Total units profit and ROI by sport - hover for details
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={450}>
+                  <ResponsiveContainer width="100%" height={300} className="md:hidden">
+                    <BarChart data={overallData} margin={{ top: 10, right: 10, left: -20, bottom: 10 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
+                      <XAxis
+                        dataKey="sport"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 10 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                        angle={-45}
+                        textAnchor="end"
+                        height={60}
+                      />
+                      <YAxis
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 11 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <Tooltip content={<OverallTooltip />} cursor={{ fill: "rgba(6, 182, 212, 0.1)" }} />
+                      <Bar
+                        dataKey="units"
+                        fill="rgb(34, 211, 238)"
+                        radius={[8, 8, 0, 0]}
+                        animationDuration={1000}
+                        animationBegin={200}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+
+                  <ResponsiveContainer width="100%" height={450} className="hidden md:block">
                     <BarChart data={overallData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
                       <XAxis
@@ -450,15 +509,84 @@ export function PerformanceCharts() {
             <TabsContent value="monthly" className="animate-fade-in">
               <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
                 <CardHeader>
-                  <CardTitle className="font-display text-2xl md:text-3xl text-white">
+                  <CardTitle className="font-display text-xl md:text-2xl lg:text-3xl text-white">
                     Monthly Performance Tracking
                   </CardTitle>
-                  <CardDescription className="text-base text-slate-300">
+                  <CardDescription className="text-sm md:text-base text-slate-300">
                     Cumulative units profit by sport over time - hover to see exact values
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={500}>
+                  <ResponsiveContainer width="100%" height={300} className="md:hidden">
+                    <AreaChart data={monthlyData} margin={{ top: 10, right: 10, left: -20, bottom: 10 }}>
+                      <defs>
+                        <linearGradient id="colorAFL" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="rgb(34, 211, 238)" stopOpacity={0.4} />
+                          <stop offset="95%" stopColor="rgb(34, 211, 238)" stopOpacity={0.05} />
+                        </linearGradient>
+                        <linearGradient id="colorNBA" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="rgb(251, 191, 36)" stopOpacity={0.4} />
+                          <stop offset="95%" stopColor="rgb(251, 191, 36)" stopOpacity={0.05} />
+                        </linearGradient>
+                        <linearGradient id="colorHorses" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="rgb(167, 139, 250)" stopOpacity={0.4} />
+                          <stop offset="95%" stopColor="rgb(167, 139, 250)" stopOpacity={0.05} />
+                        </linearGradient>
+                        <linearGradient id="colorNRL" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="rgb(52, 211, 153)" stopOpacity={0.4} />
+                          <stop offset="95%" stopColor="rgb(52, 211, 153)" stopOpacity={0.05} />
+                        </linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
+                      <XAxis
+                        dataKey="month"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 11 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <YAxis
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 11 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Area
+                        type="monotone"
+                        dataKey="NBA"
+                        stroke="rgb(251, 191, 36)"
+                        strokeWidth={2}
+                        fill="url(#colorNBA)"
+                        animationDuration={1000}
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="AFL"
+                        stroke="rgb(34, 211, 238)"
+                        strokeWidth={2}
+                        fill="url(#colorAFL)"
+                        animationDuration={1000}
+                        animationBegin={200}
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="Horses"
+                        stroke="rgb(167, 139, 250)"
+                        strokeWidth={2}
+                        fill="url(#colorHorses)"
+                        animationDuration={1000}
+                        animationBegin={400}
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="NRL"
+                        stroke="rgb(52, 211, 153)"
+                        strokeWidth={2}
+                        fill="url(#colorNRL)"
+                        animationDuration={1000}
+                        animationBegin={600}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+
+                  <ResponsiveContainer width="100%" height={500} className="hidden md:block">
                     <AreaChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
                       <defs>
                         <linearGradient id="colorAFL" x1="0" y1="0" x2="0" y2="1">

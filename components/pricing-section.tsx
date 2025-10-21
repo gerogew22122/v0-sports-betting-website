@@ -73,7 +73,7 @@ export function PricingSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Start Weekly Plan
+                  Join Weekly
                 </a>
               </Button>
             </div>
@@ -137,7 +137,7 @@ export function PricingSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Start Monthly Plan
+                  Join Monthly
                 </a>
               </Button>
             </div>
