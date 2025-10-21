@@ -39,12 +39,7 @@ export function Header() {
             >
               Performance
             </button>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              About
-            </button>
+            
             <button
               onClick={() => scrollToSection("pricing")}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"

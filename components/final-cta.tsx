@@ -1,7 +1,16 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 export function FinalCTA() {
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById("pricing")
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section className="py-20 md:py-32 relative overflow-hidden">
       {/* Background effects */}
@@ -49,13 +58,12 @@ export function FinalCTA() {
               <Button
                 size="lg"
                 className="text-xl px-12 py-8 bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-2xl shadow-accent/50 hover:shadow-accent/70 transition-all duration-300"
+                onClick={scrollToPricing}
               >
                 Join Sen.Bets Now
               </Button>
 
-              <p className="mt-6 text-sm text-muted-foreground">
-                 Cancel anytime • Instant access
-              </p>
+              <p className="mt-6 text-sm text-muted-foreground">Cancel anytime • Instant access</p>
             </div>
           </CardContent>
         </Card>
