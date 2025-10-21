@@ -4,13 +4,13 @@ export function StatsOverview() {
   const stats = [
     {
       label: "Total Profit",
-      value: "+$487K",
+      value: "$82K",
       description: "Across all sports",
       icon: "💰",
     },
     {
       label: "Win Rate",
-      value: "68.4%",
+      value: "74%",
       description: "Last 12 months",
       icon: "🎯",
     },
@@ -22,8 +22,8 @@ export function StatsOverview() {
     },
     {
       label: "Active Members",
-      value: "5,000+",
-      description: "Winning together",
+      value: "1,200+",
+      description: "Join 450+ winning members",
       icon: "👥",
     },
   ]

@@ -102,14 +102,73 @@ const monthlyData = [
 
 // Overall performance data
 const overallData = [
-  { sport: "NBA", units: 204.7, roi: 52, color: "rgb(251, 191, 36)" },
-  { sport: "AFL", units: 103.29, roi: 68, color: "rgb(34, 211, 238)" },
-  { sport: "Horses", units: 33.91, roi: 77, color: "rgb(167, 139, 250)" },
-  { sport: "NRL", units: 25.8, roi: 42, color: "rgb(52, 211, 153)" },
-  { sport: "NFL", units: 11.08, roi: 38, color: "hsl(var(--chart-3))" },
-  { sport: "NBL", units: 7.72, roi: 35, color: "hsl(var(--chart-4))" },
-  { sport: "F1", units: 2.5, roi: 28, color: "hsl(var(--chart-5))" },
+  { sport: "🏀 NBA", units: 204.7, roi: 52, color: "rgb(251, 191, 36)" },
+  { sport: "🏈 AFL", units: 103.29, roi: 68, color: "rgb(34, 211, 238)" },
+  { sport: "🐎 Horses", units: 33.91, roi: 77, color: "rgb(167, 139, 250)" },
+  { sport: "🏉 NRL", units: 25.8, roi: 42, color: "rgb(52, 211, 153)" },
+  { sport: "🏈 NFL", units: 11.08, roi: 38, color: "hsl(var(--chart-3))" },
+  { sport: "🏀 NBL", units: 7.72, roi: 35, color: "hsl(var(--chart-4))" },
+  { sport: "🏎️ F1", units: 2.5, roi: 28, color: "hsl(var(--chart-5))" },
 ]
+
+// Individual sport data for interactive selection
+const sportDetailData = {
+  NBA: [
+    { month: "Feb", units: 6.49 },
+    { month: "Mar", units: 33.32 },
+    { month: "Apr", units: 51.12 },
+    { month: "May", units: 78.76 },
+    { month: "Jun", units: 120.01 },
+    { month: "Jul", units: 150.01 },
+    { month: "Aug", units: 175.5 },
+    { month: "Sep", units: 195.2 },
+    { month: "Oct", units: 204.7 },
+  ],
+  AFL: [
+    { month: "Feb", units: 4.71 },
+    { month: "Mar", units: 9.71 },
+    { month: "Apr", units: 23.68 },
+    { month: "May", units: 26.35 },
+    { month: "Jun", units: 64.4 },
+    { month: "Jul", units: 107.56 },
+    { month: "Aug", units: 100.21 },
+    { month: "Sep", units: 103.29 },
+    { month: "Oct", units: 103.29 },
+  ],
+  Horses: [
+    { month: "Feb", units: 0 },
+    { month: "Mar", units: 1.28 },
+    { month: "Apr", units: 1.28 },
+    { month: "May", units: 1.28 },
+    { month: "Jun", units: 1.28 },
+    { month: "Jul", units: 2.51 },
+    { month: "Aug", units: 4.73 },
+    { month: "Sep", units: 19.59 },
+    { month: "Oct", units: 33.91 },
+  ],
+  NRL: [
+    { month: "Feb", units: -0.52 },
+    { month: "Mar", units: 5.19 },
+    { month: "Apr", units: 13.93 },
+    { month: "May", units: 23.19 },
+    { month: "Jun", units: 21.95 },
+    { month: "Jul", units: 17.16 },
+    { month: "Aug", units: 8.07 },
+    { month: "Sep", units: 19.4 },
+    { month: "Oct", units: 25.8 },
+  ],
+  NFL: [
+    { month: "Feb", units: 1.4 },
+    { month: "Mar", units: 1.4 },
+    { month: "Apr", units: 1.4 },
+    { month: "May", units: 1.4 },
+    { month: "Jun", units: 1.4 },
+    { month: "Jul", units: 1.4 },
+    { month: "Aug", units: 1.4 },
+    { month: "Sep", units: 10.36 },
+    { month: "Oct", units: 11.08 },
+  ],
+}
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
@@ -156,8 +215,27 @@ const OverallTooltip = ({ active, payload }: any) => {
   return null
 }
 
+const SportDetailTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-slate-900/98 backdrop-blur-md border-2 border-cyan-400/40 rounded-xl p-4 shadow-2xl">
+        <p className="font-display font-semibold text-base mb-2 text-white">{label}</p>
+        <p className="text-base">
+          <span className="text-slate-300">Units:</span>{" "}
+          <span className={`font-bold text-lg ${payload[0].value >= 0 ? "text-cyan-400" : "text-red-400"}`}>
+            {payload[0].value >= 0 ? "+" : ""}
+            {payload[0].value.toFixed(2)}U
+          </span>
+        </p>
+      </div>
+    )
+  }
+  return null
+}
+
 export function PerformanceCharts() {
-  const [activeView, setActiveView] = useState<"monthly" | "overall">("overall")
+  const [activeView, setActiveView] = useState<"monthly" | "overall" | "sport-detail">("overall")
+  const [selectedSport, setSelectedSport] = useState<keyof typeof sportDetailData>("NBA")
 
   return (
     <section id="performance" className="py-20 md:py-32 relative overflow-hidden">
@@ -174,13 +252,19 @@ export function PerformanceCharts() {
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <Tabs value={activeView} onValueChange={(v) => setActiveView(v as "monthly" | "overall")} className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8 h-12 bg-slate-800/80 backdrop-blur-sm border border-cyan-500/20">
+          <Tabs value={activeView} onValueChange={(v) => setActiveView(v as any)} className="w-full">
+            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-8 h-12 bg-slate-800/80 backdrop-blur-sm border border-cyan-500/20">
               <TabsTrigger
                 value="overall"
                 className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
               >
                 Overall Performance
+              </TabsTrigger>
+              <TabsTrigger
+                value="sport-detail"
+                className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
+              >
+                Sport Details
               </TabsTrigger>
               <TabsTrigger
                 value="monthly"
@@ -253,6 +337,110 @@ export function PerformanceCharts() {
                       </div>
                       <p className="text-3xl font-display font-bold text-emerald-400">+385.5U</p>
                       <p className="text-sm text-slate-400 mt-1">Across all sports</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="sport-detail" className="animate-fade-in">
+              <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
+                <CardHeader>
+                  <CardTitle className="font-display text-2xl md:text-3xl text-white">
+                    Individual Sport Performance
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-300">
+                    Select a sport to view detailed monthly progression
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-3 mb-8 justify-center">
+                    {(Object.keys(sportDetailData) as Array<keyof typeof sportDetailData>).map((sport) => (
+                      <button
+                        key={sport}
+                        onClick={() => setSelectedSport(sport)}
+                        className={`px-6 py-3 rounded-xl font-display font-semibold transition-all duration-300 ${
+                          selectedSport === sport
+                            ? "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/50 scale-105"
+                            : "bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border border-cyan-500/20"
+                        }`}
+                      >
+                        {sport === "NBA" && "🏀 NBA"}
+                        {sport === "AFL" && "🏈 AFL"}
+                        {sport === "Horses" && "🐎 Horses"}
+                        {sport === "NRL" && "🏉 NRL"}
+                        {sport === "NFL" && "🏈 NFL"}
+                      </button>
+                    ))}
+                  </div>
+
+                  <ResponsiveContainer width="100%" height={450}>
+                    <AreaChart
+                      data={sportDetailData[selectedSport]}
+                      margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                    >
+                      <defs>
+                        <linearGradient id="sportGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="rgb(34, 211, 238)" stopOpacity={0.5} />
+                          <stop offset="95%" stopColor="rgb(34, 211, 238)" stopOpacity={0.05} />
+                        </linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
+                      <XAxis
+                        dataKey="month"
+                        className="text-sm"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 13 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <YAxis
+                        className="text-sm"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 13 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                        label={{
+                          value: "Cumulative Units",
+                          angle: -90,
+                          position: "insideLeft",
+                          fill: "rgb(203, 213, 225)",
+                        }}
+                      />
+                      <Tooltip content={<SportDetailTooltip />} />
+                      <Area
+                        type="monotone"
+                        dataKey="units"
+                        stroke="rgb(34, 211, 238)"
+                        strokeWidth={4}
+                        fill="url(#sportGradient)"
+                        animationDuration={800}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+
+                  <div className="mt-8 p-6 bg-slate-800/60 rounded-xl border border-cyan-500/20">
+                    <h4 className="font-display font-semibold text-lg mb-3 text-white">
+                      {selectedSport} Performance Summary
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <p className="text-sm text-slate-400">Total Profit</p>
+                        <p className="text-2xl font-display font-bold text-cyan-400">
+                          +{sportDetailData[selectedSport][sportDetailData[selectedSport].length - 1].units.toFixed(2)}U
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-slate-400">Best Month</p>
+                        <p className="text-2xl font-display font-bold text-amber-400">
+                          {
+                            sportDetailData[selectedSport].reduce((max, curr) => (curr.units > max.units ? curr : max))
+                              .month
+                          }
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-slate-400">ROI</p>
+                        <p className="text-2xl font-display font-bold text-emerald-400">
+                          {overallData.find((s) => s.sport.includes(selectedSport))?.roi}%
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
