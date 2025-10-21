@@ -234,7 +234,7 @@ const SportDetailTooltip = ({ active, payload, label }: any) => {
 }
 
 export function PerformanceCharts() {
-  const [activeView, setActiveView] = useState<"monthly" | "overall" | "sport-detail">("overall")
+  const [activeView, setActiveView] = useState<"monthly" | "overall" | "sport-detail">("sport-detail")
   const [selectedSport, setSelectedSport] = useState<keyof typeof sportDetailData>("NBA")
 
   return (
@@ -255,16 +255,16 @@ export function PerformanceCharts() {
           <Tabs value={activeView} onValueChange={(v) => setActiveView(v as any)} className="w-full">
             <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-8 h-12 bg-slate-800/80 backdrop-blur-sm border border-cyan-500/20">
               <TabsTrigger
-                value="overall"
-                className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
-              >
-                Overall Performance
-              </TabsTrigger>
-              <TabsTrigger
                 value="sport-detail"
                 className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
               >
                 Sport Details
+              </TabsTrigger>
+              <TabsTrigger
+                value="overall"
+                className="font-display font-semibold data-[state=active]:bg-cyan-500 data-[state=active]:text-slate-950"
+              >
+                Overall Performance
               </TabsTrigger>
               <TabsTrigger
                 value="monthly"
@@ -273,75 +273,6 @@ export function PerformanceCharts() {
                 Monthly Breakdown
               </TabsTrigger>
             </TabsList>
-
-            <TabsContent value="overall" className="animate-fade-in">
-              <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
-                <CardHeader>
-                  <CardTitle className="font-display text-2xl md:text-3xl text-white">
-                    Overall Sport Performance
-                  </CardTitle>
-                  <CardDescription className="text-base text-slate-300">
-                    Total units profit and ROI by sport - hover for details
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={450}>
-                    <BarChart data={overallData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
-                      <XAxis
-                        dataKey="sport"
-                        className="text-sm"
-                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 13 }}
-                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
-                      />
-                      <YAxis
-                        className="text-sm"
-                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 13 }}
-                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
-                        label={{ value: "Units", angle: -90, position: "insideLeft", fill: "rgb(203, 213, 225)" }}
-                      />
-                      <Tooltip content={<OverallTooltip />} cursor={{ fill: "rgba(6, 182, 212, 0.1)" }} />
-                      <Bar
-                        dataKey="units"
-                        fill="rgb(34, 211, 238)"
-                        radius={[8, 8, 0, 0]}
-                        animationDuration={1000}
-                        animationBegin={200}
-                      />
-                    </BarChart>
-                  </ResponsiveContainer>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                    <div className="p-6 bg-gradient-to-br from-amber-500/20 to-amber-600/10 rounded-xl border-2 border-amber-400/30 shadow-lg shadow-amber-500/10">
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-5 h-5 text-amber-400" />
-                        <p className="text-sm font-medium text-slate-300">Top Performer</p>
-                      </div>
-                      <p className="text-3xl font-display font-bold text-amber-400">NBA</p>
-                      <p className="text-sm text-slate-400 mt-1">+204.7 Units</p>
-                    </div>
-
-                    <div className="p-6 bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-xl border-2 border-purple-400/30 shadow-lg shadow-purple-500/10">
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-5 h-5 text-purple-400" />
-                        <p className="text-sm font-medium text-slate-300">Best ROI</p>
-                      </div>
-                      <p className="text-3xl font-display font-bold text-purple-400">Horses</p>
-                      <p className="text-sm text-slate-400 mt-1">77% ROI</p>
-                    </div>
-
-                    <div className="p-6 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 rounded-xl border-2 border-emerald-400/30 shadow-lg shadow-emerald-500/10">
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-5 h-5 text-emerald-400" />
-                        <p className="text-sm font-medium text-slate-300">Total Profit</p>
-                      </div>
-                      <p className="text-3xl font-display font-bold text-emerald-400">+385.5U</p>
-                      <p className="text-sm text-slate-400 mt-1">Across all sports</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
 
             <TabsContent value="sport-detail" className="animate-fade-in">
               <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
@@ -441,6 +372,75 @@ export function PerformanceCharts() {
                           {overallData.find((s) => s.sport.includes(selectedSport))?.roi}%
                         </p>
                       </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="overall" className="animate-fade-in">
+              <Card className="border-2 border-cyan-500/30 bg-slate-900/80 backdrop-blur-md shadow-2xl shadow-cyan-500/10">
+                <CardHeader>
+                  <CardTitle className="font-display text-2xl md:text-3xl text-white">
+                    Overall Sport Performance
+                  </CardTitle>
+                  <CardDescription className="text-base text-slate-300">
+                    Total units profit and ROI by sport - hover for details
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={450}>
+                    <BarChart data={overallData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
+                      <XAxis
+                        dataKey="sport"
+                        className="text-sm"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 13 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                      />
+                      <YAxis
+                        className="text-sm"
+                        tick={{ fill: "rgb(203, 213, 225)", fontSize: 13 }}
+                        axisLine={{ stroke: "rgb(148, 163, 184)" }}
+                        label={{ value: "Units", angle: -90, position: "insideLeft", fill: "rgb(203, 213, 225)" }}
+                      />
+                      <Tooltip content={<OverallTooltip />} cursor={{ fill: "rgba(6, 182, 212, 0.1)" }} />
+                      <Bar
+                        dataKey="units"
+                        fill="rgb(34, 211, 238)"
+                        radius={[8, 8, 0, 0]}
+                        animationDuration={1000}
+                        animationBegin={200}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                    <div className="p-6 bg-gradient-to-br from-amber-500/20 to-amber-600/10 rounded-xl border-2 border-amber-400/30 shadow-lg shadow-amber-500/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <TrendingUp className="w-5 h-5 text-amber-400" />
+                        <p className="text-sm font-medium text-slate-300">Top Performer</p>
+                      </div>
+                      <p className="text-3xl font-display font-bold text-amber-400">NBA</p>
+                      <p className="text-sm text-slate-400 mt-1">+204.7 Units</p>
+                    </div>
+
+                    <div className="p-6 bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-xl border-2 border-purple-400/30 shadow-lg shadow-purple-500/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <TrendingUp className="w-5 h-5 text-purple-400" />
+                        <p className="text-sm font-medium text-slate-300">Best ROI</p>
+                      </div>
+                      <p className="text-3xl font-display font-bold text-purple-400">Horses</p>
+                      <p className="text-sm text-slate-400 mt-1">77% ROI</p>
+                    </div>
+
+                    <div className="p-6 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 rounded-xl border-2 border-emerald-400/30 shadow-lg shadow-emerald-500/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <TrendingUp className="w-5 h-5 text-emerald-400" />
+                        <p className="text-sm font-medium text-slate-300">Total Profit</p>
+                      </div>
+                      <p className="text-3xl font-display font-bold text-emerald-400">+385.5U</p>
+                      <p className="text-sm text-slate-400 mt-1">Across all sports</p>
                     </div>
                   </div>
                 </CardContent>

@@ -66,7 +66,7 @@ export function PricingSection() {
 
               <Button
                 asChild
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold py-5 md:py-6 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 text-sm md:text-base"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-5 md:py-6 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 text-sm md:text-base"
               >
                 <a
                   href="https://whop.com/senbets-premium/sen-premium-access-weekly/"
@@ -147,7 +147,7 @@ export function PricingSection() {
         {/* Trust indicators */}
         <div className="mt-8 md:mt-12 text-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
           <p className="text-slate-400 text-xs md:text-sm px-4">
-            🔒 Secure payment via Whop • Cancel anytime • Join 200+ winning members
+            🔒 Secure payment via Whop • Cancel anytime • Join 450+ winning members
           </p>
         </div>
       </div>
