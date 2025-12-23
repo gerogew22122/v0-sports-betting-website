@@ -37,7 +37,9 @@ export function PricingSection() {
                   <span className="font-display text-4xl md:text-5xl font-bold text-cyan-400">$0.00</span>
                   <span className="text-slate-400 text-sm md:text-base">/week</span>
                 </div>
-                <p className="text-cyan-400 text-xs md:text-sm mt-2 font-semibold">3 days free</p>
+                <div className="inline-block mt-3 px-3 py-1.5 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 border border-cyan-400/60 rounded-full animate-pulse">
+                  <p className="text-cyan-300 text-xs md:text-sm font-bold drop-shadow-lg drop-shadow-cyan-500/50">✨ 3 days free ✨</p>
+                </div>
               </div>
 
               <ul className="space-y-3 mb-8">
@@ -101,7 +103,9 @@ export function PricingSection() {
                   <span className="font-display text-4xl md:text-5xl font-bold text-amber-400">$0.00</span>
                   <span className="text-slate-400 text-sm md:text-base">/month</span>
                 </div>
-                <p className="text-amber-400 text-xs md:text-sm mt-2 font-semibold">3 days free</p>
+                <div className="inline-block mt-3 px-3 py-1.5 bg-gradient-to-r from-amber-500/30 to-amber-400/30 border border-amber-400/60 rounded-full animate-pulse">
+                  <p className="text-amber-300 text-xs md:text-sm font-bold drop-shadow-lg drop-shadow-amber-500/50">✨ 3 days free ✨</p>
+                </div>
               </div>
 
               <ul className="space-y-3 mb-8">
