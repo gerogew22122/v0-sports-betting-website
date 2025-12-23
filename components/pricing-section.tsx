@@ -38,7 +38,7 @@ export function PricingSection() {
                   <span className="text-slate-400 text-sm md:text-base">/week</span>
                 </div>
                 <div className="inline-block mt-3 px-3 py-1.5 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 border border-cyan-400/60 rounded-full animate-pulse">
-                  <p className="text-cyan-300 text-xs md:text-sm font-bold drop-shadow-lg drop-shadow-cyan-500/50">✨ 3 days free ✨</p>
+                  <p className="text-cyan-300 text-xs md:text-sm font-bold drop-shadow-lg drop-shadow-cyan-500/50">✨ 2 days free ✨</p>
                 </div>
               </div>
 
@@ -104,7 +104,7 @@ export function PricingSection() {
                   <span className="text-slate-400 text-sm md:text-base">/month</span>
                 </div>
                 <div className="inline-block mt-3 px-3 py-1.5 bg-gradient-to-r from-amber-500/30 to-amber-400/30 border border-amber-400/60 rounded-full animate-pulse">
-                  <p className="text-amber-300 text-xs md:text-sm font-bold drop-shadow-lg drop-shadow-amber-500/50">✨ 3 days free ✨</p>
+                  <p className="text-amber-300 text-xs md:text-sm font-bold drop-shadow-lg drop-shadow-amber-500/50">✨ 2 days free ✨</p>
                 </div>
               </div>
 
