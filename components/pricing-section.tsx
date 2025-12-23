@@ -28,15 +28,16 @@ export function PricingSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
             <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 md:p-8 hover:border-cyan-400/50 transition-all duration-300">
               <div className="mb-6">
-                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2">Weekly Access</h3>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2">Weekly Access Free Trial</h3>
                 <p className="text-slate-400 text-sm md:text-base">Perfect for testing the waters</p>
               </div>
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl md:text-5xl font-bold text-cyan-400">$12.99</span>
+                  <span className="font-display text-4xl md:text-5xl font-bold text-cyan-400">$0.00</span>
                   <span className="text-slate-400 text-sm md:text-base">/week</span>
                 </div>
+                <p className="text-cyan-400 text-xs md:text-sm mt-2 font-semibold">3 days free</p>
               </div>
 
               <ul className="space-y-3 mb-8">
@@ -91,16 +92,16 @@ export function PricingSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-amber-500/30 to-amber-400/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
             <div className="relative bg-slate-900/80 backdrop-blur-sm border-2 border-amber-500/50 rounded-2xl p-6 md:p-8 hover:border-amber-400/70 transition-all duration-300">
               <div className="mb-6">
-                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2">Monthly Access</h3>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2">Monthly Access Free Trial</h3>
                 <p className="text-slate-400 text-sm md:text-base">Best value for serious punters</p>
               </div>
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl md:text-5xl font-bold text-amber-400">$28.95</span>
+                  <span className="font-display text-4xl md:text-5xl font-bold text-amber-400">$0.00</span>
                   <span className="text-slate-400 text-sm md:text-base">/month</span>
                 </div>
-                <p className="text-cyan-400 text-xs md:text-sm mt-2 font-semibold">Save 15% vs weekly</p>
+                <p className="text-amber-400 text-xs md:text-sm mt-2 font-semibold">3 days free</p>
               </div>
 
               <ul className="space-y-3 mb-8">
